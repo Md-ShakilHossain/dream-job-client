@@ -11,11 +11,25 @@ const Navbar = () => {
 
         <li><NavLink className={({ isActive, isPending }) =>
             `text-sm md:text-lg lg:text-xl ${isPending ? "pending" : isActive ? "underline text-[#FF444A]" : ""}`
-        } to='/addProduct'>Add Product</NavLink></li>
+        } to='/allJobs'>All Jobs</NavLink></li>
 
         <li><NavLink className={({ isActive, isPending }) =>
             `text-sm md:text-lg lg:text-xl ${isPending ? "pending" : isActive ? "underline text-[#FF444A]" : ""}`
-        } to='/carts'>My Cart</NavLink></li>
+        } to='/blogs'>Blogs</NavLink></li>
+    </>
+
+    const privateLinks = <>
+        <li><NavLink className={({ isActive, isPending }) =>
+            `text-sm md:text-lg lg:text-xl ${isPending ? "pending" : isActive ? "underline text-[#FF444A]" : ""}`
+        } to='appliedJobs'>Applied Jobs</NavLink></li>
+
+        <li><NavLink className={({ isActive, isPending }) =>
+            `text-sm md:text-lg lg:text-xl ${isPending ? "pending" : isActive ? "underline text-[#FF444A]" : ""}`
+        } to='/addJobs'>Add a Jobs</NavLink></li>
+
+        <li><NavLink className={({ isActive, isPending }) =>
+            `text-sm md:text-lg lg:text-xl ${isPending ? "pending" : isActive ? "underline text-[#FF444A]" : ""}`
+        } to='/myJobs'>My Jobs</NavLink></li>
     </>
     return (
         <div>
@@ -36,7 +50,7 @@ const Navbar = () => {
                     </button>
                     <div className="hidden w-full lg:block md:w-auto">
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                            {links}
+                            {links} {privateLinks}
                         </ul>
                     </div>
                     <div>

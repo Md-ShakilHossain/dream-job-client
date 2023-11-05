@@ -29,7 +29,7 @@ const Slider = () => {
                     <form onSubmit={handleSearch}>
                         <input type="text" name="searchText" placeholder="Search By Job Title" id="" className="w-full rounded-2xl mt-8 text-center" />
                         <div className="w-1/2 mt-2 mx-auto">
-                            <input className="bg-slate-300 py-1 rounded-2xl text-xl font-bold w-full" type="submit" value="Search" />
+                            <input className="bg-slate-300 py-1 rounded-2xl text-xl font-bold hover:bg-slate-400 w-full" type="submit" value="Search" />
                         </div>
                     </form>
                 </div>
