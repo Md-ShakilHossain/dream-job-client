@@ -14,7 +14,7 @@ const Login = () => {
 
     return (
         <div className="w-11/12 mt-16 bg-slate-100">
-            <h3 className="text-4xl text-green-900 font-bold text-center mb-4">Please Login</h3>
+            <h3 className="text-4xl text-teal-700 font-bold text-center mb-4">Please Login</h3>
             <Card className="max-w-sm mx-auto">
                 <form onSubmit={handleLogin}
                     className="flex flex-col gap-4">
