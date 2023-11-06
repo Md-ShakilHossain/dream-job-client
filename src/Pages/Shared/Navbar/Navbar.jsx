@@ -1,9 +1,14 @@
-import { Button, Dropdown } from "flowbite-react";
+import { Button, Dropdown, Tooltip } from "flowbite-react";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 
 
 const Navbar = () => {
+
+    const { user, logOut } = useAuth();
+    console.log(user);
+
     const links = <>
         <li><NavLink className={({ isActive, isPending }) =>
             `text-sm md:text-lg lg:text-xl ${isPending ? "pending" : isActive ? "underline text-[#FF444A]" : ""}`
@@ -31,6 +36,13 @@ const Navbar = () => {
             `text-sm md:text-lg lg:text-xl ${isPending ? "pending" : isActive ? "underline text-[#FF444A]" : ""}`
         } to='/myJobs'>My Jobs</NavLink></li>
     </>
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
     return (
         <div>
 
@@ -62,11 +74,37 @@ const Navbar = () => {
 
                     <div className="hidden w-full lg:block md:w-auto">
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                            {links} {privateLinks}
+                            {links} 
+                            
+                           {
+                            user ? <li className="flex gap-8">{privateLinks}</li> : ""
+                           }
                         </ul>
                     </div>
                     <div>
-                        <Link to={`/login`}><Button>Login</Button></Link>
+                        {
+                            user ?
+                                <Dropdown
+                                    arrowIcon={false}
+                                    inline
+                                    label={
+                                        <Tooltip content={user.displayName}>
+                                            <img data-tooltip-target="tooltip-default" className="rounded-full w-10 h-10" src={user.photoURL} alt="" />
+                                        </Tooltip>
+                                    }
+                                >
+                                    <Dropdown.Item>
+                                        <Button
+                                            onClick={handleLogOut}
+                                        >Logout</Button>
+                                    </Dropdown.Item>
+
+                                </Dropdown>
+
+                                :
+                                <Link to={`/login`}><Button>Login</Button></Link>
+                        }
+
                     </div>
 
                 </div>
