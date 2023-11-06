@@ -1,15 +1,60 @@
 import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import { useState } from "react";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import Swal from "sweetalert2";
+import auth from "../../Firebase/firebase.config";
 
 const Login = () => {
+    const { loginUser } = useAuth();
+    const [error, setError] = useState('');
+
+    const provider = new GoogleAuthProvider();
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleLogin = e => {
         e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        const user = {email, password};
-        console.log(user);
+        const form = new FormData(e.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+        // const user = { email, password };
+        // console.log(user);
+        setError('');
+
+        loginUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Login Successful',
+                    icon: 'success',
+                    confirmButtonText: 'Okay'
+                })
+
+                setTimeout(() => {
+                    navigate(location?.state ? location.state : '/');
+                }, 1000);
+
+
+            })
+            .catch(() => {
+                setError('Invalid Email or Password')
+            })
+    }
+
+    const handleLoginWithGoogle = () => {
+        signInWithPopup(auth, provider)
+            .then(result => {
+                console.log(result.user);
+
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     return (
@@ -29,6 +74,11 @@ const Login = () => {
                             <Label value="Your password" />
                         </div>
                         <TextInput name="password" type="password" placeholder="Password Here" required />
+                        <div>
+                            {
+                                error && <p className="text-red-500">{error}</p>
+                            }
+                        </div>
                     </div>
                     <div className="flex items-center gap-2">
                         <Checkbox />
@@ -36,8 +86,15 @@ const Login = () => {
                     </div>
                     <Button type="submit">Submit</Button>
                 </form>
-                
+
             </Card>
+            <div>
+                <h3 className="mt-5 text-2xl text-center font-semibold">OR</h3>
+                <Button
+                onClick={handleLoginWithGoogle}
+                className="mt-4 max-w-sm mx-auto">Login with Google 
+                </Button>
+            </div>
             <p className="text-center mt-8">New to DreamJobs? <span className="font-bold"><Link to={`/register`}>Register</Link></span></p>
         </div>
     );

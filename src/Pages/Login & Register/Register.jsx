@@ -1,18 +1,59 @@
 import { Button, Card, Label, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import { useState } from "react";
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
 
+    const { createUser } = useAuth();
+    const [error, setError] = useState('');
+    const [firebaseError, setFirebaseError] = useState('');
+
     const handleRegister = e => {
         e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const photoURL = form.photo.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const user = {name, photoURL, email, password};
-        console.log(user);
+        const form = new FormData(e.currentTarget);
+        const name = form.get('name');
+        const photoURL = form.get('photo');
+        const email = form.get('email');
+        const password = form.get('password');
+        // const user = { name, photoURL, email, password };
+        setError('');
+        setFirebaseError('');
+
+        if (password.length < 6) {
+            setError('Password length should be at least 6');
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            setError('Password should includes at least one capital letter');
+            return;
+        }
+        else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password)) {
+            setError('Password should includes at least one special character');
+            return;
+        }
+
+        createUser(email, password)
+            .then(result => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Registration Successful',
+                    icon: 'success',
+                    confirmButtonText: 'Okay'
+                })
+                console.log(result.user);
+                updateProfile(result.user, {
+                    displayName: name,
+                    photoURL: photoURL
+                })
+            })
+            .catch(() => {
+                setFirebaseError('Email already in used');
+            })
+
     }
 
     return (
@@ -38,14 +79,20 @@ const Register = () => {
                             <Label value="Your email" />
                         </div>
                         <TextInput name="email" type="email" placeholder="Email Here" required />
+                        <div>
+                            <p className="text-red-500 font-semibold">{firebaseError}</p>
+                        </div>
                     </div>
                     <div>
                         <div className="mb-2 block">
                             <Label value="Your password" />
                         </div>
                         <TextInput name="password" type="password" placeholder="Password Here" required />
+                        <div>
+                            <p className="text-red-500 font-semibold">{error}</p>
+                        </div>
                     </div>
-                   
+
                     <Button type="submit">Submit</Button>
                 </form>
 
