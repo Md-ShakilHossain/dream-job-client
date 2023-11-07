@@ -1,11 +1,88 @@
-import { Button, Card } from "flowbite-react";
+import { Button, Card, Modal } from "flowbite-react";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const JobDetails = () => {
+    const { user } = useAuth();
 
     const job = useLoaderData();
-    const { jobBanner, jobTitle, shortDescription, salaryRange, appliedNumber, category } = job;
+    const [openModal, setOpenModal] = useState(false);
+    const { jobBanner, jobTitle, shortDescription, salaryRange, appliedNumber, category, authorName,authorEmail, postingDate, deadline } = job;
+
+
+    const deadlineDate = new Date(deadline);
+    const currentDate = Date.now();
+
+    const onCloseModal = () => {
+        setOpenModal(false);
+    }
+
+
+    const handleApplyButton = () => {
+        if(user.email === authorEmail){
+            Swal.fire({
+                title: 'Error',
+                text: 'You cannot apply your own job',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            })
+            return;
+        }
+
+        
+
+        if(currentDate > deadlineDate){
+            Swal.fire({
+                title: 'Error',
+                text: 'Deadline is Over',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            })
+            return;
+        }
+        
+        else{
+            setOpenModal(true);
+        }
+    }
+
+    const handleSubmitApplication = (e) => {
+         e.preventDefault();
+         const form = e.target;
+         const applicantName = form.name.value;
+         const applicantEmail = form.email.value;
+         const resume = form.resume.value;
+         
+         const jobWithApplicant = {applicantName, applicantEmail, resume, jobBanner, jobTitle, shortDescription, salaryRange, appliedNumber, category, authorName,authorEmail, postingDate, deadline };
+
+         fetch('http://localhost:5000/appliedJobs', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(jobWithApplicant)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if(data.insertedId){
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'You Have Applied Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Okay'
+                      })
+
+                      onCloseModal();
+                }
+
+            })
+         
+
+    }
 
     return (
         <div className="mt-20">
@@ -24,7 +101,31 @@ const JobDetails = () => {
                         <p className="mt-4 font-bold">Title: {jobTitle}</p>
                         <p className=" font-bold">Salary: {salaryRange}</p>
                         <p className="mb-4 font-bold">Applied: {appliedNumber}</p>
-                        <Button className="w-full">Apply</Button>
+                        <Button onClick={handleApplyButton} className="w-full">Apply</Button>
+                        <Modal show={openModal} size="md" onClose={onCloseModal} popup>
+                            <Modal.Header />
+                            <Modal.Body>
+                                <div className="space-y-2">
+                                    <h3 className="text-xl font-medium text-gray-900">Apply as {jobTitle}</h3>
+                                    <form onSubmit={handleSubmitApplication}>
+                                        <h4 className="text-xl">Your Name</h4>
+                                        <input type="text" name="name" id="" defaultValue={user.displayName} readOnly className="rounded-lg mt-2 w-full"/>
+
+
+                                        <h4 className="text-xl mt-2">Your Email</h4>
+                                        <input type="email" name="email" id="" defaultValue={user.email} readOnly className="rounded-lg mt-2 w-full"/>
+
+
+                                        <h4 className="text-xl mt-2">Your Resume Link</h4>
+                                        <input type="text" name="resume" id="" required className="rounded-lg mt-2 w-full"/>
+
+                                        <input type="submit" value="Submit" className="w-full bg-teal-600 rounded-lg text-white py-2 mt-2" />
+                                        
+                                    </form>
+
+                                </div>
+                            </Modal.Body>
+                        </Modal>
 
                     </div>
                     <div>

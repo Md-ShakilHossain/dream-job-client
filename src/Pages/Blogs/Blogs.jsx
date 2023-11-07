@@ -32,6 +32,13 @@ const Blogs = () => {
                 <li><span className="font-bold">IndexedDB:</span> Storing tokens in IndexedDB allows for more storage capacity and better security compared to local storage, but it requires more complex management.</li>
                 <li><span className="font-bold">Memory:</span> Storing tokens in memory can provide better security but has limitations in maintaining the tokens persistence across browser sessions.</li>
             </ul>
+            <hr />
+            <h2 className="text-2xl text-teal-600 font-bold text-center my-5">ExpressJS</h2>
+            <hr />
+            <p className="text-justify text-xl my-5">Express.js is a minimal and flexible web application framework for Node.js. It provides a robust set of features to develop web and mobile applications. It is designed for building single-page, multi-page, and hybrid web applications. Express.js is one of the most popular and widely used frameworks for web development in the Node.js ecosystem.</p>
+            <h2 className="text-2xl text-teal-600 font-bold text-center my-5">NextJS</h2>
+            <hr />
+            <p className="text-justify text-xl my-5">Next.js is a popular open-source React framework that enables server-side rendering (SSR), static site generation (SSG), and other powerful features for building modern web applications. It provides a robust development experience, supporting features such as automatic code splitting, hot module replacement, and route pre-fetching, which enhance performance and optimize user experience.</p>
 
             <hr />
             <h2 className="text-2xl text-teal-600 font-bold text-center my-5">Explanation of My Code</h2>
