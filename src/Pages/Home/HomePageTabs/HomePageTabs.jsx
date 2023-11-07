@@ -71,7 +71,7 @@ const HomePageTabs = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
                         {
                             allJobs.map(job => <Card
-                                className="w-72 md:w-80 lg:w-96"
+                                className="w-72 md:w-80 lg:w-96 border-t-4 border-b-4 border-t-pink-500 border-b-pink-500 shadow-2xl"
                                 key={job._id}>
 
                                 <h4 className="text-teal-600 text-xl text-center font-bold">{job.jobTitle}</h4>
