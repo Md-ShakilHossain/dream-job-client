@@ -80,7 +80,7 @@ const HomePageTabs = () => {
                                 <p><span className="font-bold">Deadline</span> : {job.deadline} </p>
                                 <p><span className="font-bold">Salary:</span> {job.salaryRange}</p>
                                 <p><span className="font-bold">Applied:</span> {job.appliedNumber}</p>
-                                <Link to={`/jobDetails/${job._id}`}><Button className="w-full">Details</Button></Link>
+                                <Link to={`/job/${job._id}`}><Button className="w-full">Details</Button></Link>
 
                             </Card>)
                         }
@@ -99,7 +99,7 @@ const HomePageTabs = () => {
                                 <p><span className="font-bold">Deadline</span> : {job.deadline} </p>
                                 <p><span className="font-bold">Salary:</span> {job.salaryRange}</p>
                                 <p><span className="font-bold">Applied:</span> {job.appliedNumber}</p>
-                                <Link to={`/jobDetails/${job._id}`}><Button className="w-full">Details</Button></Link>
+                                <Link to={`/job/${job._id}`}><Button className="w-full">Details</Button></Link>
 
                             </Card>)
                         }
@@ -118,7 +118,7 @@ const HomePageTabs = () => {
                                 <p><span className="font-bold">Deadline</span> : {job.deadline} </p>
                                 <p><span className="font-bold">Salary:</span> {job.salaryRange}</p>
                                 <p><span className="font-bold">Applied:</span> {job.appliedNumber}</p>
-                                <Link to={`/jobDetails/${job._id}`}><Button className="w-full">Details</Button></Link>
+                                <Link to={`/job/${job._id}`}><Button className="w-full">Details</Button></Link>
 
                             </Card>)
                         }
@@ -137,7 +137,7 @@ const HomePageTabs = () => {
                                 <p><span className="font-bold">Deadline</span> : {job.deadline} </p>
                                 <p><span className="font-bold">Salary:</span> {job.salaryRange}</p>
                                 <p><span className="font-bold">Applied:</span> {job.appliedNumber}</p>
-                                <Link to={`/jobDetails/${job._id}`}><Button className="w-full">Details</Button></Link>
+                                <Link to={`/job/${job._id}`}><Button className="w-full">Details</Button></Link>
 
                             </Card>)
                         }
@@ -156,7 +156,7 @@ const HomePageTabs = () => {
                                 <p><span className="font-bold">Deadline</span> : {job.deadline} </p>
                                 <p><span className="font-bold">Salary:</span> {job.salaryRange}</p>
                                 <p><span className="font-bold">Applied:</span> {job.appliedNumber}</p>
-                                <Link to={`/jobDetails/${job._id}`}><Button className="w-full">Details</Button></Link>
+                                <Link to={`/job/${job._id}`}><Button className="w-full">Details</Button></Link>
 
                             </Card>)
                         }
