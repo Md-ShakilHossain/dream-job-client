@@ -10,6 +10,7 @@ const WeAreBest = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 <Card className="w-72 md:w-80 lg:w-96">
                     <div>
+                        {/* <img className="h-52 mx-auto" src="https://i.ibb.co/dj2DkqN/diverse-Job.jpg" alt="" /> */}
                         <h3 className="text-2xl text-teal-600 font-bold text-center">Divers Job Opportunities</h3>
                         <p className="mt-4 text-justify">
                             Explore our platforms extensive array of job openings across diverse industries, roles, and experience levels. With a broad spectrum of employment options, our platform caters to the unique needs and aspirations of job seekers, providing them with a comprehensive range of opportunities to find the perfect job that aligns with their skills and ambitions.
@@ -18,6 +19,7 @@ const WeAreBest = () => {
                 </Card>
                 <Card className="w-72 md:w-80 lg:w-96">
                     <div>
+                        {/* <img className="h-52 mx-auto" src="https://i.ibb.co/TMYW0B0/customized-Job-Matching.jpg" alt="" /> */}
                         <h3 className="text-2xl text-teal-600 font-bold text-center">Customized Job Matching</h3>
                         <p className="text-justify mt-4">
                             Our platform employs advanced algorithms to deliver personalized job recommendations tailored to each users unique skills, preferences, and career objectives. By leveraging this customized job matching feature, users can discover relevant job opportunities that align with their expertise and aspirations, streamlining their job search process and maximizing their chances of finding their dream job
