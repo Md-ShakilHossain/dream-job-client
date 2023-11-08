@@ -1,5 +1,6 @@
 import { Button, Table } from "flowbite-react";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 
 
@@ -31,6 +32,9 @@ const AllJobs = () => {
     return (
         <div>
             <h1 className="text-center text-4xl text-teal-600 font-bold mt-20">ALL JOBS</h1>
+            <Helmet>
+                <title>DreamJob | AllJobs</title>
+            </Helmet>
             <form onSubmit={handleSubmit}>
                 <div className="flex mt-10 justify-center">
                     <input type="text" name="searchValue" placeholder="Search By Title (Case Sensitive)" className="w-1/2 text-center rounded-bl-xl" id="" />

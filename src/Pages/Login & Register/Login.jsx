@@ -1,10 +1,12 @@
 import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, json, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Swal from "sweetalert2";
 import auth from "../../Firebase/firebase.config";
+import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const Login = () => {
     const { loginUser } = useAuth();
@@ -33,7 +35,6 @@ const Login = () => {
                     icon: 'success',
                     confirmButtonText: 'Okay'
                 })
-
                 setTimeout(() => {
                     navigate(location?.state ? location.state : '/');
                 }, 1000);
@@ -59,6 +60,9 @@ const Login = () => {
 
     return (
         <div className="w-11/12 mt-16 bg-slate-100">
+            <Helmet>
+                <title>DreamJob | Title</title>
+            </Helmet>
             <h3 className="text-4xl text-teal-700 font-bold text-center mb-4">Please Login</h3>
             <Card className="max-w-sm mx-auto">
                 <form onSubmit={handleLogin}

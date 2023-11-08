@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -58,6 +59,9 @@ const Register = () => {
 
     return (
         <div className="w-11/12 mt-16 bg-slate-100">
+            <Helmet>
+                <title>DreamJob | Register</title>
+            </Helmet>
             <h3 className="text-4xl text-teal-700 font-bold text-center mb-4">Please Register</h3>
             <Card className="max-w-sm mx-auto">
                 <form onSubmit={handleRegister}

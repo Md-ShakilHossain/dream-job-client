@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const JobDetails = () => {
@@ -86,6 +87,7 @@ const JobDetails = () => {
 
     return (
         <div className="mt-20">
+            <Helmet><title>DreamJob | JobDetails</title></Helmet>
             <h2 className="text-4xl text-center font-bold mb-8">Details of <span className="text-teal-600">{jobTitle}</span></h2>
             <Card>
                 <div className="flex flex-col-reverse items-center justify-center lg:flex-row gap-6">

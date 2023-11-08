@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 
 
 const Blogs = () => {
     return (
         <div>
+            <Helmet>
+                <title>DreamJob | Blogs</title>
+            </Helmet>
             <h2 className="text-2xl text-teal-600 font-bold text-center mt-20 mb-5">Access Token and Refresh Token</h2>
             <hr />
             <p className="text-justify text-xl my-5">An access token and a refresh token are both used in authentication and authorization processes, especially in the context of token-based authentication such as OAuth. They serve different purposes in ensuring secure access to resources and improving the user experience. </p>
