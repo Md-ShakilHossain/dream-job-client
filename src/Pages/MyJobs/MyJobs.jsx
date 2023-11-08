@@ -10,7 +10,7 @@ const MyJobs = () => {
     const { user } = useAuth();
     const [myJobs, setMyJobs] = useState([]);
 
-    const url = `http://localhost:5000/alljobs?addedBy=${user.email}`;
+    const url = `https://dream-jobs-server.vercel.app/alljobs?addedBy=${user.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -30,7 +30,7 @@ const MyJobs = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/alljobs?addedBy=${user.email}&id=${id}`, {
+                fetch(`https://dream-jobs-server.vercel.app/alljobs?addedBy=${user.email}&id=${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

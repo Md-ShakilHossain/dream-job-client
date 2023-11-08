@@ -36,7 +36,7 @@ const UpdateAJob = () => {
         const addedBy = user.email;
         const updatedJob = {jobBanner, jobTitle, authorName, authorEmail, category, shortDescription, salaryRange, postingDate, deadline, appliedNumber, addedBy};
 
-        fetch(`http://localhost:5000/allJobs/${_id}`, {
+        fetch(`https://dream-jobs-server.vercel.app/allJobs/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

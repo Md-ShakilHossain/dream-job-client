@@ -12,11 +12,11 @@ const HomePageTabs = () => {
     const [activeTab, setActiveTab] = useState(0);
     // const axiosSecure = useAxiosSecure();
 
-    // const url = 'http://localhost:5000/alljobs';
+    // const url = 'https://dream-jobs-server.vercel.app/alljobs';
     // const url = '/alljobs';
 
     useEffect(() => {
-        axios.get('http://localhost:5000/alljobs')
+        axios.get('https://dream-jobs-server.vercel.app/alljobs')
             .then(res => setAllJobs(res.data))
     }, [])
     console.log(allJobs);

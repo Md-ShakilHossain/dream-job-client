@@ -31,7 +31,7 @@ const AddJobs = () => {
         const job = {jobBanner, jobTitle, authorName, authorEmail, category, shortDescription, salaryRange, postingDate, deadline, appliedNumber, addedBy};
 
 
-        fetch('http://localhost:5000/alljobs', {
+        fetch('https://dream-jobs-server.vercel.app/alljobs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

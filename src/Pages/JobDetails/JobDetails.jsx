@@ -59,7 +59,7 @@ const JobDetails = () => {
          
          const jobWithApplicant = {applicantName, applicantEmail, resume, jobBanner, jobTitle, shortDescription, salaryRange, appliedNumber, category, authorName,authorEmail, postingDate, deadline };
 
-         fetch('http://localhost:5000/appliedJobs', {
+         fetch('https://dream-jobs-server.vercel.app/appliedJobs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

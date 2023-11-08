@@ -10,7 +10,7 @@ const AppliedJobs = () => {
     const [selectedValue, setSelectedValue] = useState('');
     const [filteredJobs, setFilteredJobs] = useState(appliedJobs);
 
-    const url = `http://localhost:5000/appliedJobs?applicantEmail=${user.email}`;
+    const url = `https://dream-jobs-server.vercel.app/appliedJobs?applicantEmail=${user.email}`;
 
     useEffect(() => {
         fetch(url)
