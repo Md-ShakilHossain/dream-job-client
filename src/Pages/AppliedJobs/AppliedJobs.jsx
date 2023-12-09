@@ -26,32 +26,32 @@ const AppliedJobs = () => {
     const handleSelectChange = (event) => {
         const value = event.target.value;
         setSelectedValue(value);
-        
-        if(value === 'All'){
-            const allJobs = appliedJobs.filter(job=> job.category === value);
+
+        if (value === 'All') {
+            const allJobs = appliedJobs.filter(job => job.category === value);
             setFilteredJobs(appliedJobs);
-           }
-    
-           if (value === 'On Site') {
-            const onSiteJobs = appliedJobs.filter(job=> job.category === value);
+        }
+
+        if (value === 'On Site') {
+            const onSiteJobs = appliedJobs.filter(job => job.category === value);
             setFilteredJobs(onSiteJobs);
-           }
+        }
 
-           if (value === 'Remote') {
-            const remoteJobs = appliedJobs.filter(job=> job.category === value);
+        if (value === 'Remote') {
+            const remoteJobs = appliedJobs.filter(job => job.category === value);
             setFilteredJobs(remoteJobs);
-           }
+        }
 
-           if (value === 'Hybrid') {
-            const hybridJobs = appliedJobs.filter(job=> job.category === value);
+        if (value === 'Hybrid') {
+            const hybridJobs = appliedJobs.filter(job => job.category === value);
             setFilteredJobs(hybridJobs);
-           }
+        }
 
-           if (value === 'Part Time') {
-            const partTimeJobs = appliedJobs.filter(job=> job.category === value);
+        if (value === 'Part Time') {
+            const partTimeJobs = appliedJobs.filter(job => job.category === value);
             setFilteredJobs(partTimeJobs);
-           }
-       
+        }
+
 
     };
 
@@ -84,7 +84,7 @@ const AppliedJobs = () => {
                     <Table.HeadCell>Deadline</Table.HeadCell>
                     <Table.HeadCell>Salary</Table.HeadCell>
                     <Table.HeadCell>Download</Table.HeadCell>
-                    
+
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {
@@ -98,12 +98,14 @@ const AppliedJobs = () => {
                             <Table.Cell>{job.deadline}</Table.Cell>
                             <Table.Cell>{job.salaryRange}</Table.Cell>
                             <Table.Cell><Button>Download</Button></Table.Cell>
-                            
-                           
+
+
                         </Table.Row>)
                     }
                 </Table.Body>
             </Table>
+
+
         </div>
     );
 };

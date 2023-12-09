@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 import axios from "axios";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
 import { Button, Card } from "flowbite-react";
 import { Link } from "react-router-dom";
 
@@ -10,10 +10,7 @@ import { Link } from "react-router-dom";
 const HomePageTabs = () => {
     const [allJobs, setAllJobs] = useState([]);
     const [activeTab, setActiveTab] = useState(0);
-    // const axiosSecure = useAxiosSecure();
-
-    // const url = 'https://dream-jobs-server.vercel.app/alljobs';
-    // const url = '/alljobs';
+    
 
     useEffect(() => {
         axios.get('https://dream-jobs-server.vercel.app/alljobs')
