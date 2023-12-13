@@ -35,6 +35,10 @@ const Navbar = () => {
         <li><NavLink className={({ isActive, isPending }) =>
             `text-sm md:text-lg lg:text-xl ${isPending ? "pending" : isActive ? "underline text-[#FF444A]" : ""}`
         } to='/myJobs'>My Jobs</NavLink></li>
+
+        <li><NavLink className={({ isActive, isPending }) =>
+            `text-sm md:text-lg lg:text-xl ${isPending ? "pending" : isActive ? "underline text-[#FF444A]" : ""}`
+        } to='/userReviews'>User Reviews</NavLink></li>
     </>
 
     const handleLogOut = () => {
